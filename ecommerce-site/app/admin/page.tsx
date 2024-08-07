@@ -1,9 +1,27 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import db from "@/db/db";
+import { formatCurrency, formatNumber } from "@/lib/formatters";
 
-export default function AdminDashboard() {
+async function getSalesData() {
+    const data = await db.order.aggregate({
+        _sum : {price: true},
+        _count: true
+    })
+    return {
+        amount: (data._sum.price || 0) / 100 ,
+        // divide by 100 to convert to pounds
+        numberOfSales: data._count
+    }
+}
+
+export default async function AdminDashboard() {
+    const salesData = await getSalesData()
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <DashboardCard title="Sales" subtitle="Sales subtitle" body="Body Stuff" />
+            <DashboardCard 
+                title="Sales" 
+                subtitle={`${formatNumber(salesData.numberOfSales)} Orders`} 
+                body={formatCurrency(salesData.amount)} />
         </div>
     )
 }
