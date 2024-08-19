@@ -1,5 +1,8 @@
 import { Nav, NavLink } from "@/components/Nav";
 
+// This will force next.js to not cache any admin pages
+export const dynamic = "force-dynamic";
+
 export default function AdminLayout({
     children,
 }: Readonly<{
