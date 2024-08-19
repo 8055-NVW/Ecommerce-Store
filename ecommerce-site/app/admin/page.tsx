@@ -1,17 +1,24 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import db from "@/db/db";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
+import { waitForDebugger } from "inspector";
 
 async function getSalesData() {
     const data = await db.order.aggregate({
         _sum: { price: true },
         _count: true
     })
+
+    await wait(2000)
     return {
         amount: (data._sum.price || 0) / 100,
         // divide by 100 to convert to pounds
         numberOfSales: data._count
     }
+}
+
+function wait(duration: number){
+    return new Promise(resolve => setTimeout(resolve, duration))
 }
 
 async function getUserData() {
