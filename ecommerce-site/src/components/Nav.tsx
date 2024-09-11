@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import { cn } from '@/src/lib/utils'
 import { ComponentProps, ReactNode } from 'react'
 
 export function Nav({ children }: { children: ReactNode }) {

@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import { PageHeader } from "../_components/PageHeader";
 import Link from "next/link";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import db from "@/db/db";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/src/components/ui/table";
+import db from "@/src/db/db";
 import { CheckCircle2, Delete, MoreVertical, XCircle } from "lucide-react";
 import { format } from "path";
-import { formatCurrency, formatNumber } from "@/lib/formatters";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { formatCurrency, formatNumber } from "@/src/lib/formatters";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu";
 import { ActiveToggleDropdownItem, DeleteDropdownItem } from "./_components/ProductActions";
 
 

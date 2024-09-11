@@ -1,10 +1,8 @@
 "use server"
-
-import db from "@/db/db"
+import db from "@/src/db/db"
 import { z } from "zod"
 import fs from "fs/promises"
 import { notFound, redirect } from "next/navigation"
-
 
 const fileSchema = z.instanceof(File, { message: "File is required" })
 const imageSchema = fileSchema.refine(file => file.size === 0 || file.type.startsWith("image/"))

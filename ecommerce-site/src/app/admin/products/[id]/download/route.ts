@@ -1,4 +1,4 @@
-import db from "@/db/db";
+import db from "@/src/db/db";
 import { notFound } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";

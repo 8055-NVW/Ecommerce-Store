@@ -1,10 +1,10 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { formatCurrency } from "@/lib/formatters"
+import { Button } from "@/src/components/ui/button"
+import { Input } from "@/src/components/ui/input"
+import { Label } from "@/src/components/ui/label"
+import { Textarea } from "@/src/components/ui/textarea"
+import { formatCurrency } from "@/src/lib/formatters"
 import { useState } from "react"
 import { addProduct, updateProduct } from "../../_actions/products"
 import { useFormState, useFormStatus } from "react-dom"
@@ -13,7 +13,7 @@ import Image from "next/image"
 
 export function ProductForm({ product }: { product?: Product | null }) {
     // 
-    const [error, action ] = useFormState(
+    const [error, action] = useFormState(
         product == null ? addProduct : updateProduct.bind(null, product.id),
         {}
     )
@@ -25,7 +25,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
         <form action={action} className="space-y-8">
             <div className="space-y-2 ">
                 <Label htmlFor="name">Name</Label>
-                <Input type="text" id="name" name="name" required defaultValue={product?.name || ""}/>
+                <Input type="text" id="name" name="name" required defaultValue={product?.name || ""} />
                 {error.name && <div className="text-destructive">{error.name}</div>}
             </div>
             <div className="space-y-2 ">
@@ -39,7 +39,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
             </div>
             <div className="space-y-2 ">
                 <Label htmlFor="description">Description</Label>
-                <Textarea id="description" name="description" required defaultValue={product?.description || ""}/>
+                <Textarea id="description" name="description" required defaultValue={product?.description || ""} />
                 {error.description && <div className="text-destructive">{error.description}</div>}
             </div>
             <div className="space-y-2 ">
@@ -52,7 +52,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
             <div className="space-y-2 ">
                 <Label htmlFor="image">Image</Label>
                 <Input type="file" id="image" name="image" required={product == null} />
-                {product != null && <Image src={product.imagePath} width='300' height='300' alt="Product Image"/>}
+                {product != null && <Image src={product.imagePath} width='300' height='300' alt="Product Image" />}
                 {error.image && <div className="text-destructive">{error.image}</div>}
             </div>
             <SubmitButton />

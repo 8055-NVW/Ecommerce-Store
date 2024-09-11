@@ -1,4 +1,4 @@
-import { Nav, NavLink } from "@/components/Nav";
+import { Nav, NavLink } from "@/src/components/Nav";
 
 // This will force next.js to not cache any admin pages
 export const dynamic = "force-dynamic";
