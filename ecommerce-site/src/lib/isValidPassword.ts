@@ -15,3 +15,4 @@ async function hashPassword(password: string) {
 
     return Buffer.from(arrayBuffer).toString("base64");
 }
+

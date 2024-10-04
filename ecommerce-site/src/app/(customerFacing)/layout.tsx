@@ -10,7 +10,7 @@ export default function Layout({
 }>) {
     return <>
         <Nav>
-            <NavLink href="/">Dashboard</NavLink>
+            <NavLink href="/">Home</NavLink>
             <NavLink href="/products">Products</NavLink>
             <NavLink href="/orders">My Orders</NavLink>
         </Nav>
