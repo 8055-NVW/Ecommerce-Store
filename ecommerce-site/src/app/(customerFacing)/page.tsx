@@ -1,14 +1,16 @@
 
-import { ProductCard } from "@/src/components/ProductCard"
+import { ProductCard, ProductCardSkeleton } from "@/src/components/ProductCard"
 import { Button } from "@/src/components/ui/button"
 import db from "@/src/db/db"
 import { Product } from "@prisma/client"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Suspense } from "react"
 
 
 // function to get the newest products from db
 function getMostPopularProducts() {
+    // await wait(3000)
     return db.product.findMany({
         where: { availability: true },
         orderBy: { orders: { _count: "desc" } },
@@ -17,6 +19,7 @@ function getMostPopularProducts() {
 }
 
 function getNewestProducts() {
+    // await wait(2000)
     return db.product.findMany({
         where: { availability: true },
         orderBy: { createdAt: "desc" },
@@ -39,6 +42,10 @@ type ProductGridSectionProps = {
     productsFetcher: () => Promise<Product[]>
 }
 
+// function wait(duration: number) {
+//     return new Promise(resolve => setTimeout(resolve, duration))
+// }
+
 async function ProductGridSection({ productsFetcher, title }:
     ProductGridSectionProps) {
     return (
@@ -53,11 +60,28 @@ async function ProductGridSection({ productsFetcher, title }:
                 </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(await productsFetcher()).map(product => (
-                    <ProductCard key={product.id} {...product} />
-                ))}
+                <Suspense
+                    fallback={
+                        <>
+                            <ProductCardSkeleton />
+                            <ProductCardSkeleton />
+                            <ProductCardSkeleton />
+                        </>
+                    }
+                >
+                    <ProductSuspense productsFetcher={productsFetcher} />
+                </Suspense>
             </div>
         </div>
     )
 }
 
+async function ProductSuspense({
+    productsFetcher,
+}: {
+    productsFetcher: () => Promise<Product[]>
+}) {
+    return (await productsFetcher()).map(product => (
+        <ProductCard key={product.id} {...product} />
+    ))
+}
