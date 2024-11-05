@@ -22,8 +22,7 @@ type CheckoutFormProps = {
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string)
 
-export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
-    
+export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {    
     return (
         <div className="max-w-5xl w-full mx-auto space-y-8">
             <div className="flex gap-4 items-center">
@@ -46,7 +45,6 @@ export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
                 <Form price={product.price} productId={product.id}/>
             </Elements>
         </div>
-
     )
 }
 
