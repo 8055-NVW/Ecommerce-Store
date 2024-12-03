@@ -1,6 +1,6 @@
 "use client"
 
-import { emailOrderHistory } from "@/actions/orders"
+import { emailOrderHistory } from "@/src/actions/orders"
 import { Button } from "@/src/components/ui/button"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card"

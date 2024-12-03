@@ -16,7 +16,7 @@ import { OrderInformation } from "./components/OrderInformation"
       name: "Product name",
       description: "Some description",
       imagePath:
-        "/products/474afeea-870a-474b-9337-8f2be682a3de-me.jpg",
+        "/products/d10f2346-3d43-4d1d-a0f0-62a3294b49d1-pngtree-vibrant-gradient-texture-for-a-captivating-birthday-youtube-thumbnail-image_13905332.png",
     },
     order: {
       id: crypto.randomUUID(),
