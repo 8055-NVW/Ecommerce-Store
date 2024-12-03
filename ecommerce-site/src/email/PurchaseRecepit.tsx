@@ -16,7 +16,7 @@ import { OrderInformation } from "./components/OrderInformation"
       name: "Product name",
       description: "Some description",
       imagePath:
-        "public/products/3208043e-cd25-47ef-be6f-0c88f65def8c-me.jpg",
+        "/products/474afeea-870a-474b-9337-8f2be682a3de-me.jpg",
     },
     order: {
       id: crypto.randomUUID(),
